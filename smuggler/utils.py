@@ -51,10 +51,18 @@ def serialize_to_response(app_labels=[], exclude=[], response=None,
     out.write = lambda s: stream.write(s)  # this seems to be sufficient.
     try:
         # Now make sys.stdout our wrapped StringIO instance and start the dump.
+
+        '''
+        # sys.stdout = out
+        dumpdata = DumpData()
+        dumpdata.stdout = out
+        dumpdata.stderr = None
+        '''
         sys.stdout = out
         dumpdata = DumpData()
         dumpdata.stdout = sys.stdout
         dumpdata.stderr = sys.stderr
+
         output = dumpdata.handle(*app_labels, **{
             'exclude': exclude,
             'format': format,

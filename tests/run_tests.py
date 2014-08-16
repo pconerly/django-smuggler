@@ -13,3 +13,5 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'test_settings'
 from django.core import management
 
 management.call_command('test', 'test_app')
+
+# management.call_command('runserver','8090')
